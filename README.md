@@ -37,7 +37,7 @@ Open `index.html` in a browser. Choose one of the six assignment coordinates or 
 
 ### Publish with GitHub Pages
 
-The `Publish GitHub Pages` workflow runs the unit tests, packages only the browser files, and deploys them on pushes to `main` (or from **Actions → Publish GitHub Pages → Run workflow**). Once the first workflow run completes, find the live link in its deployment environment or under **Settings → Pages**. The expected URL is `https://<github-user>.github.io/<repository-name>/`.
+In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The `Publish GitHub Pages` workflow runs the unit tests, packages only the browser files, and deploys them on pushes to `main` (or from **Actions → Publish GitHub Pages → Run workflow**). Once the workflow succeeds, find the live link in its deployment environment or under **Settings → Pages**. The expected URL is `https://<github-user>.github.io/<repository-name>/`.
 
 The repository is intended to remain private for the assignment. GitHub Pages availability for private repositories depends on the account or organization plan. If GitHub reports that Pages is unavailable for this private repository, keep the repository private and use an eligible plan or another static host rather than making it public without authorization.
 
