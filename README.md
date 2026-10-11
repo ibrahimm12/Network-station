@@ -35,6 +35,10 @@ If $d \le r$, the station speed is $(r-d)^2$; otherwise its speed is zero. The p
 
 Open `index.html` in a browser. Choose one of the six assignment coordinates or enter a custom X/Y point. The coverage map, best-station result, and comparison table update immediately. The optional minimum-signal slider defaults to zero, preserving the assignment's highest-positive-speed rule; raising it hides matches below that score. Select the speed heading to sort the comparison table.
 
+![Desktop preview of the Signal Field network station finder, showing station coverage and the selected device result](docs/images/network-station-live.png)
+
+The preview shows the default device point and its highest-speed station. The interface also supports custom coordinates and a responsive mobile layout.
+
 ### Publish with GitHub Pages
 
 In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The `Publish GitHub Pages` workflow runs the unit tests, packages only the browser files, and deploys them on pushes to `main` (or from **Actions → Publish GitHub Pages → Run workflow**). Once the workflow succeeds, find the live link in its deployment environment or under **Settings → Pages**. The expected URL is `https://<github-user>.github.io/<repository-name>/`.
