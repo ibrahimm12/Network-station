@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2f3ed" />
+    <meta name="description" content="Explore the strongest in-range network station for any coordinate." />
+    <title>Signal / Field — Network station finder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="masthead">
+        <a class="wordmark" href="#top" aria-label="Signal Field home">
+          <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>SIGNAL<span class="wordmark-slash">/</span>FIELD</span>
+        </a>
+        <div class="mast-meta"><span class="live-dot"></span> NETWORK STUDY <span class="meta-divider">/</span> 2D COVERAGE MODEL</div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">FIELD NOTE 01 <span>·</span> CONNECTIVITY</p>
+            <h1 id="page-title"><span class="headline-line">Find the <em>strongest</em></span><span class="headline-line">signal nearby.</span></h1>
+            <p class="intro-copy">Locate the strongest in-range network station for any device coordinate. Compare coverage, distance, and calculated signal speed at a glance.</p>
+            <button class="primary-cta" id="analyze-cta" type="button">Analyze a point <span aria-hidden="true">↘</span></button>
+          </div>
+          <div class="intro-stats" aria-label="Network size">
+            <div><strong id="station-count">05</strong><span>STATIONS</span></div>
+            <div><strong id="point-count">06</strong><span>TEST POINTS</span></div>
+            <div><strong>2D</strong><span>SPACE</span></div>
+          </div>
+        </section>
+
+        <section class="benefit-strip" aria-label="What you can do">
+          <article><span class="benefit-number">01</span><div><h2>Find high-value zones</h2><p>See which coordinates land inside useful coverage.</p></div></article>
+          <article><span class="benefit-number">02</span><div><h2>Compare nearby signals</h2><p>Inspect station distance, reach, and relative speed.</p></div></article>
+          <article><span class="benefit-number">03</span><div><h2>Act on the strongest data</h2><p>Surface the best positive-speed station instantly.</p></div></article>
+        </section>
+
+        <section class="workspace" aria-label="Network station calculator">
+          <aside class="control-panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">01 / LOCATION</p><h2>Choose a point</h2></div>
+              <span class="heading-mark">⌖</span>
+            </div>
+
+            <div id="device-list" class="device-list" aria-label="Assignment device points"></div>
+
+            <form id="coordinate-form" class="coordinate-form">
+              <p class="form-label">OR ENTER COORDINATES</p>
+              <div class="coordinate-fields">
+                <label>X <input id="coordinate-x" name="x" type="number" step="any" inputmode="decimal" required aria-label="Device X coordinate" /></label>
+                <span class="coordinate-comma">,</span>
+                <label>Y <input id="coordinate-y" name="y" type="number" step="any" inputmode="decimal" required aria-label="Device Y coordinate" /></label>
+                <button class="add-point" type="submit" aria-label="Add coordinate" title="Add coordinate">+</button>
+              </div>
+              <p id="form-error" class="form-error" role="alert"></p>
+            </form>
+
+            <div class="station-register">
+              <div class="register-heading"><p class="eyebrow">02 / RANGE</p><span>DIST / SPEED</span></div>
+              <div id="station-list" class="station-list"></div>
+            </div>
+
+            <div class="signal-filter">
+              <div class="filter-heading"><p class="eyebrow">03 / SIGNAL THRESHOLD</p><output id="threshold-value" for="minimum-signal">0</output></div>
+              <input id="minimum-signal" type="range" min="0" max="169" step="1" value="0" aria-label="Minimum signal speed" />
+              <p>Hide matches below this speed. Zero keeps the assignment’s non-zero rule.</p>
+            </div>
+          </aside>
+
+          <section class="analysis-panel" aria-label="Selected point analysis">
+            <div class="analysis-top">
+              <div><p class="eyebrow">SPATIAL ANALYSIS <span>·</span> <span id="selected-label">DEVICE 01</span></p><h2 id="coordinate-title">(0, 0)</h2></div>
+              <div id="connection-status" class="connection-status"></div>
+            </div>
+
+            <div class="map-frame">
+              <div class="map-toolbar"><span>COVERAGE MAP</span><span>SIGNAL SPEED FALLS WITH DISTANCE</span></div>
+              <canvas id="coverage-map" aria-label="Map showing network station locations, coverage radii, and selected device"></canvas>
+              <span class="axis-label axis-y" aria-hidden="true">Y / COORDINATE</span>
+              <span class="axis-label axis-x" aria-hidden="true">X / COORDINATE</span>
+              <div class="map-legend">
+                <span><i class="legend-station"></i> NETWORK STATION</span>
+                <span><i class="legend-device"></i> DEVICE</span>
+                <span><i class="legend-reach"></i> REACH BOUNDARY</span>
+              </div>
+              <p class="map-caption">Reach circles show where speed is positive. The closest in-range station wins by remaining reach squared.</p>
+            </div>
+
+            <div id="result-card" class="result-card" aria-live="polite"></div>
+          </section>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading"><div><p class="eyebrow">03 / ALL ASSIGNMENT COORDINATES</p><h2 id="results-title">Coverage at a glance</h2></div><span class="results-note">SELECT A ROW TO INSPECT</span></div>
+          <div class="results-table-wrap">
+            <table>
+              <thead><tr><th>DEVICE</th><th>COORDINATE</th><th>BEST STATION</th><th>GAP TO STATION</th><th><button class="sort-button" id="sort-speed" type="button" aria-label="Sort by speed">SPEED <span aria-hidden="true">↕</span></button></th><th>STATUS</th></tr></thead>
+              <tbody id="results-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>NETWORK STATION FINDER <b>·</b> GEOMETRY × COVERAGE</span><span>EUCLIDEAN DISTANCE <b>·</b> SQUARED REMAINING REACH</span></footer>
+    </div>
+    <script src="NetworkStation.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

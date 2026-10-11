@@ -1,0 +1,14 @@
+{
+  "name": "network-station-speed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Find the highest-speed in-range network station for each device coordinate.",
+  "main": "NetworkStation.js",
+  "scripts": {
+    "start": "node NetworkStation.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
