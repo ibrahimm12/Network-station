@@ -78,13 +78,3 @@ Best network station for point 18,18 is 20,20 with speed 10.06
 Best network station for point 13,13 is 5,5 with speed 2.84
 No network station within reach for point 25,99
 ```
-
-## Optional Azure deployment reference
-
-The supplied [Azure deployment guide](Deploying%20the%20application%20to%20Azure%20using%20Vscode.pdf) describes a Visual Studio website package and legacy Azure PowerShell website cmdlets; those commands do not apply to this static HTML/JavaScript interface. Cloud hosting is optional. If desired, the browser UI can be hosted as a static site on Azure Storage or another static host; no cloud deployment is included here.
-
-## Submission checklist
-
-The original assignment asks for a **private** GitHub or GitLab repository, shared with `ncrecruitment`, and an email to your Nordcloud contact when finished. Do not commit credentials or secrets.
-
-Both the CLI and browser interface can be evaluated locally; no cloud resources are required.
